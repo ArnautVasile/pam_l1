@@ -32,3 +32,4 @@ jobs:
           heroku_email: 'arnautvasili53@gmail.com'
           branch: 'main'
           usedocker: false
+          copy: false

@@ -30,8 +30,11 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 **/build/
-# Exclude build/web/ from being ignored
+
+# Exclude build/web/ and its contents from being ignored
+!build/
 !build/web/
+!build/web/**
 
 # Symbolication related
 app.*.symbols
