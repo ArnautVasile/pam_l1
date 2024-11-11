@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             const SizedBox(
               child: Center(
-                child: Text('Loan Calculator', style: MyText.titleHeader),
+                child: Text('Loan Calculator 2025', style: MyText.titleHeader),
               ),
             ),
             SizedBox(height: 40), // Add spacing before the slider
