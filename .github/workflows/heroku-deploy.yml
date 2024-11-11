@@ -24,15 +24,11 @@ jobs:
       - name: Build web release
         run: flutter build web
 
-      - name: Install Heroku CLI
-        run: |
-          curl https://cli-assets.heroku.com/install.sh | sh
-
       - name: Deploy to Heroku
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: |
-          echo "$HEROKU_API_KEY" | heroku auth:token
-          heroku container:login
-          heroku container:push web -a pad2024
-          heroku container:release web -a pad2024
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: 'pad2024'
+          heroku_email: 'arnautvasili53@gmail.com'
+          branch: 'main'
+          usedocker: false
