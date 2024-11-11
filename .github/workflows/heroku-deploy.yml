@@ -24,14 +24,16 @@ jobs:
       - name: Build web release
         run: flutter build web
 
+      - name: Install Heroku CLI
+        run: |
+          curl https://cli-assets.heroku.com/install.sh | sh
+
       - name: Deploy to Heroku
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |
-          git config --global user.email "arnautvasili53@gmail.com"  # Add this line
-          git config --global user.name "Arnaut Vasile"               # And this line
-          git remote add heroku https://git.heroku.com/pad2024.git
+          heroku auth:token
+          heroku git:remote -a pad2024
+          git config --global user.email "arnautvasili53@gmail.com"
+          git config --global user.name "Arnaut Vasile"
           git push heroku main --force
-          git add .
-          git commit -m "Deploy"
-          git push heroku main
