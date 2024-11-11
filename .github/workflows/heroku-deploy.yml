@@ -28,15 +28,11 @@ jobs:
         run: |
           curl https://cli-assets.heroku.com/install.sh | sh
 
-      - name: Authenticate with Heroku
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: |
-          echo $HEROKU_API_KEY | heroku auth:token
-
       - name: Deploy to Heroku
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |
-          heroku git:remote -a pad2024
-          git push heroku main --force
+          echo "$HEROKU_API_KEY" | heroku auth:token
+          heroku container:login
+          heroku container:push web -a pad2024
+          heroku container:release web -a pad2024
