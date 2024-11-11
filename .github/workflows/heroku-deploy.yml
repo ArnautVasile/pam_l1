@@ -31,6 +31,7 @@ jobs:
           git config --global user.email "arnautvasili53@gmail.com"  # Add this line
           git config --global user.name "Arnaut Vasile"               # And this line
           git remote add heroku https://git.heroku.com/pad2024.git
+          git push heroku main --force
           git add .
           git commit -m "Deploy"
           git push heroku main
